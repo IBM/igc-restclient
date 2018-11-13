@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <name>Information Server REST Client</name>
+    <description>
+        A REST API client for IBM Information Server.
+    </description>
+
+    <groupId>com.ibm.infosvr</groupId>
+    <artifactId>igc-restclient</artifactId>
+    <version>0.1-SNAPSHOT</version>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>IBM</name>
+        <url>http://www.ibm.com</url>
+    </organization>
+
+    <scm>
+        <connection>scm:git:git://github.com/IBM/igc-restclient.git</connection>
+        <developerConnection>scm:git:ssh://github.com:IBM/igc-restclient.git</developerConnection>
+        <url>http://github.com/IBM/igc-restclient/tree/master</url>
+    </scm>
+
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/IBM/igc-restclient/issues</url>
+    </issueManagement>
+
+    <inceptionYear>2018</inceptionYear>
+
+    <developers>
+        <developer>
+            <id>cmgrote</id>
+            <name>Christopher Grote</name>
+            <email>chris@thegrotes.net</email>
+            <timezone>Europe/London</timezone>
+            <roles>
+                <role>maintainer</role>
+            </roles>
+            <organization>IBM Corporation</organization>
+        </developer>
+    </developers>
+
+    <properties>
+
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <spring-web.version>5.0.6.RELEASE</spring-web.version>
+        <jackson.version>2.9.2</jackson.version>
+        <testng.version>6.14.3</testng.version>
+
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-annotations</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
