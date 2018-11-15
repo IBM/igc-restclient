@@ -1,8 +1,12 @@
+/* SPDX-License-Identifier: Apache-2.0 */
 package com.ibm.infosvr.restclient.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ibm.infosvr.restclient.IGCRestClient;
 
+import java.lang.reflect.Field;
+import java.sql.Ref;
 import java.util.ArrayList;
 
 /**
@@ -14,8 +18,16 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class ReferenceList extends ObjectPrinter {
 
-    public Paging paging = new Paging();
-    public ArrayList<Reference> items = new ArrayList<Reference>();
+    protected Paging paging = new Paging();
+    protected ArrayList<Reference> items = new ArrayList<Reference>();
+
+    @JsonProperty("paging")
+    public Paging getPaging() { return this.paging; }
+    public void setPaging(Paging paging) { this.paging = paging; }
+
+    @JsonProperty("items")
+    public ArrayList<Reference> getItems() { return this.items; }
+    public void setItems(ArrayList<Reference> items) { this.items = items; }
 
     /**
      * Returns true iff there are more (unretrieved) pages for the relationships that this object represents

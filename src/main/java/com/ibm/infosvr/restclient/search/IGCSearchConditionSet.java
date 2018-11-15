@@ -1,4 +1,5 @@
-package com.ibm.infosvr.restclient;
+/* SPDX-License-Identifier: Apache-2.0 */
+package com.ibm.infosvr.restclient.search;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;

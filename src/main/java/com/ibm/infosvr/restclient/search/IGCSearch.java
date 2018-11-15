@@ -1,14 +1,10 @@
-package com.ibm.infosvr.restclient;
+/* SPDX-License-Identifier: Apache-2.0 */
+package com.ibm.infosvr.restclient.search;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
-import java.io.IOException;
-import java.util.ArrayList;
 
 public class IGCSearch {
 

@@ -61,6 +61,25 @@ Term term = (Term)igcrest.getAssetById(bigTermRid);
 System.out.println("Term '" + term.name + " (" + term.short_description + ")' has the following assigned assets: " + term.assigned_assets);
 ```
 
+You can also dynamically retrieve properties (ie. using a variable as the name of the property) by using the `getPropertyByName` method available on all POJOs:
+
+```java
+Reference something = igcrest.getAssetById(rid);
+String propertyNameFromSomewhere = "short_description";
+if (something.isSimpleType(propertyNameFromSomewhere)) {
+    Object value = something.getPropertyByName(propertyNameFromSomewhere);
+    System.out.println("Simple property '" + propertyNameFromSomewhere + "' = " + value);
+} else if (something.isReference(propertyNameFromSomewhere)) {
+    Reference value = (Reference) something.getPropertyByName(propertyNameFromSomewhere);
+    System.out.println("Property was a relationship to: " + value._id);
+} else if (something.isReferenceList(propertyNameFromSomewhere)) {
+    ReferenceList value = (ReferenceList) something.getPropertyByName(propertyNameFromSomewhere);
+    System.out.println("Property was a list of " + value.paging.numTotal + " total relationships.");
+}
+```
+
+If the property does not exist, you'll simply receive back a `null` (and a stacktrace will be dumped in the background). (So you'd want to add null handling to the above simple example.)
+
 ### Searching for assets
 
 Additional classes have been provided to help simplify searching against IGC as well.

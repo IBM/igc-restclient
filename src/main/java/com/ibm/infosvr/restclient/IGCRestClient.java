@@ -1,3 +1,4 @@
+/* SPDX-License-Identifier: Apache-2.0 */
 package com.ibm.infosvr.restclient;
 
 import javax.net.ssl.*;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.ibm.infosvr.restclient.model.*;
+import com.ibm.infosvr.restclient.search.IGCSearch;
 import org.springframework.util.Base64Utils;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -314,11 +316,11 @@ public class IGCRestClient {
     public ArrayList<Reference> getAllPages(ArrayList<Reference> items, Paging paging) {
         ArrayList<Reference> allPages = items;
         ReferenceList results = getNextPage(paging);
-        ArrayList<Reference> resultsItems = results.items;
+        ArrayList<Reference> resultsItems = results.getItems();
         if (resultsItems.size() > 0) {
             // NOTE: this ordering of addAll is important, to avoid side-effecting the original set of items
             resultsItems.addAll(allPages);
-            allPages = getAllPages(resultsItems, results.paging);
+            allPages = getAllPages(resultsItems, results.getPaging());
         }
         return allPages;
     }
