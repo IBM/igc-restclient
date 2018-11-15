@@ -16,7 +16,7 @@ The `IGCRestClient` class provides the entry point to creating a connection to I
 ```java
 import com.ibm.infosvr.restclient.IGCRestClient;
 
-String basicAuth = IGCRestClient.encodeBasicAuth("isadmin", "isadmin");
+String basicAuth = IGCRestClient.encodeBasicAuth("isadmin", "password");
 igcrest = new IGCRestClient("https://myenv.myhost.com:9446", basicAuth);
 ```
 
@@ -58,7 +58,7 @@ Note that if an asset type is not registered, the minimalistic amount of data fo
 
 ```java
 Term term = (Term)igcrest.getAssetById(bigTermRid);
-System.out.println("Term '" + term.name + " (" + term.short_description + ")' has the following assigned assets: " + term.assigned_assets);
+System.out.println("Term '" + term.getName() + " (" + term.getShortDescription() + ")' has the following assigned assets: " + term.getAssignedAssets());
 ```
 
 You can also dynamically retrieve properties (ie. using a variable as the name of the property) by using the `getPropertyByName` method available on all POJOs:
@@ -71,10 +71,10 @@ if (something.isSimpleType(propertyNameFromSomewhere)) {
     System.out.println("Simple property '" + propertyNameFromSomewhere + "' = " + value);
 } else if (something.isReference(propertyNameFromSomewhere)) {
     Reference value = (Reference) something.getPropertyByName(propertyNameFromSomewhere);
-    System.out.println("Property was a relationship to: " + value._id);
+    System.out.println("Property was a relationship to: " + value.getId());
 } else if (something.isReferenceList(propertyNameFromSomewhere)) {
     ReferenceList value = (ReferenceList) something.getPropertyByName(propertyNameFromSomewhere);
-    System.out.println("Property was a list of " + value.paging.numTotal + " total relationships.");
+    System.out.println("Property was a list of " + value.getPaging().getNumTotal() + " total relationships.");
 }
 ```
 
